@@ -1,13 +1,19 @@
+/*!
+ * jquery.cbMobileAdStyle.js v1.0.0
+ * Auther @maechabin
+ * Licensed under mit license
+ * https://github.com/maechabin/jquery.cb-mobileadstyle.js
+ */
 ;(function ($, window, document, undefined) {
 
-    var SpAdStyle = function (element) {
-        
+    var MobileAdStyle = function (element) {
+
         this.element = element;
         this.$element = $(element);
 
     };
 
-    SpAdStyle.prototype.overlay = function () {
+    MobileAdStyle.prototype.overlay = function () {
 
         this.$element.css({
 
@@ -18,14 +24,14 @@
             "text-align": "center"
 
         });
-        
+
         this.$element.find(".cb-adstyle").css("display", "inline");
 
         return this;
 
     };
-    
-    SpAdStyle.prototype.interstitial = function () {
+
+    MobileAdStyle.prototype.interstitial = function () {
 
         var that = this;
         var bg = $("<div>").css({
@@ -58,7 +64,7 @@
 
         that.$element.append(bg);
         $(bg).append(clear_btn);
-        
+
         that.$element.find(".cb-adstyle").css("display", "inline").css({
 
             "position": "absolute",
@@ -85,8 +91,8 @@
         return this;
 
     };
-    
-    SpAdStyle.prototype.responsive = function () {
+
+    MobileAdStyle.prototype.responsive = function () {
 
         this.$element.find("img").css({
         
@@ -99,7 +105,7 @@
 
     };
 
-    SpAdStyle.prototype.retina = function () {
+    MobileAdStyle.prototype.retina = function () {
 
         var img = this.$element.find("img");
         var w = img.width() / 2;
@@ -117,12 +123,12 @@
     };
 
     $.extend($.fn, {
-    
+
         cbOverlay: function () {
 
             return this.each(function () {
 
-                new SpAdStyle(this).overlay();
+                new MobileAdStyle(this).overlay();
 
             });
 
@@ -132,7 +138,7 @@
 
             return this.each(function () {
 
-                new SpAdStyle(this).interstitial();
+                new MobileAdStyle(this).interstitial();
 
             });
 
@@ -142,7 +148,7 @@
 
             return this.each(function () {
 
-                new SpAdStyle(this).responsive();
+                new MobileAdStyle(this).responsive();
 
             });
 
@@ -152,7 +158,7 @@
 
             return this.each(function () {
 
-                new SpAdStyle(this).retina();
+                new MobileAdStyle(this).retina();
 
             });
 
