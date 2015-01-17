@@ -10,6 +10,21 @@
 
         this.element = element;
         this.$element = $(element);
+        this.adstyle = this.$element.find(".cb-adstyle");
+        this.timer = null;
+
+        this.$element.find("img").each(function () {
+
+            var $this = $(this);
+            var width = $this.width();
+
+            if (width == "1") {
+
+                $this.css("display", "none");
+
+            }
+
+        });
 
     };
 
@@ -25,7 +40,12 @@
 
         });
 
-        this.$element.find(".cb-adstyle").css("display", "inline");
+        this.$element.find(".cb-adstyle").css({
+
+            "display": "inline",
+            "vertical-align": "bottom"
+
+        });
 
         return this;
 
@@ -65,7 +85,7 @@
         that.$element.append(bg);
         $(bg).append(clear_btn);
 
-        that.$element.find(".cb-adstyle").css("display", "inline").css({
+        this.adstyle.css("display", "inline").css({
 
             "position": "absolute",
             "top": 0,
@@ -94,8 +114,8 @@
 
     MobileAdStyle.prototype.responsive = function () {
 
-        this.$element.find("img").css({
-        
+        this.adstyle.css({
+
             "max-width": "100%",
             "height": "auto"
 
@@ -107,11 +127,10 @@
 
     MobileAdStyle.prototype.retina = function () {
 
-        var img = this.$element.find("img");
-        var w = img.width() / 2;
-        var h = img.height() / 2;
+        var w = this.adstyle.width() / 2;
+        var h = this.adstyle.height() / 2;
 
-        this.$element.find("img").css({
+        this.adstyle.css({
 
             "width": w + "px",
             "height": h + "px"
@@ -119,6 +138,102 @@
         });
 
         return this;
+
+    };
+
+    MobileAdStyle.prototype.random = function (options) {
+
+        if (options == "") {
+
+            return this;
+
+        }
+
+        var img_list, img_random;
+        var default_url = this.$element.find("a").attr("href");
+        var default_image = this.adstyle.attr("src");
+
+        img_list = options.ad;
+        img_list.push({url: default_url, image: default_image});
+
+        img_random = Math.floor(Math.random() * img_list.length);
+        this.$element.find("a").attr("href", img_list[img_random].url);
+        this.adstyle.attr("src", img_list[img_random].image);
+
+        return this;
+
+    };
+
+    MobileAdStyle.prototype.triming = function () {
+
+        var window_width = $(window).width();
+        var img_width = this.adstyle.width();
+        var diff_width = (img_width - window_width) / 2;
+
+        if (img_width > window_width) {
+
+            this.$element.css({
+
+                "overflow": "hidden",
+                "width": window_width + "px", 
+
+            });
+
+            this.adstyle.css("display", "inline").css({
+
+                "position": "relative",
+                "left": - diff_width + "px"
+
+            });
+
+        } else {
+
+            this.$element.css({
+
+                "width": "100%",
+                                "text-align": "center"
+
+            });
+
+            this.adstyle.css("display", "inline").css({
+
+                "position": "relative",
+                "left": 0,
+                "right": 0
+
+            });
+
+        }
+
+        this.getResize();
+
+        return this;
+
+    };
+
+    MobileAdStyle.prototype.checkTimer = function () {
+
+        var that = this;
+
+        clearTimeout(this.timer);
+
+        this.timer = setTimeout(function () {
+
+            that.triming();
+
+        }, 30);
+
+    };
+
+    MobileAdStyle.prototype.getResize = function () {
+
+        var that = this;
+
+        $(window).on("resize", function () {
+
+            that.checkTimer();
+
+        });
 
     };
 
@@ -159,6 +274,26 @@
             return this.each(function () {
 
                 new MobileAdStyle(this).retina();
+
+            });
+
+        },
+
+        cbTriming: function () {
+
+            return this.each(function () {
+
+                new MobileAdStyle(this).triming();
+
+            });
+
+        },
+
+        cbRandom: function (options) {
+
+            return this.each(function () {
+
+                new MobileAdStyle(this).random(options);
 
             });
 
