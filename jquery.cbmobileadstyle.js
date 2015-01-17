@@ -32,7 +32,6 @@
 
         var style;
         var position = "bottom";
-        console.log(options);
 
         if (options != undefined && options.position == "top") {
         
