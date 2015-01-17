@@ -10,8 +10,8 @@
 
         this.element = element;
         this.$element = $(element);
-        this.adstyle = this.$element.find(".cb-adstyle");
         this.timer = null;
+        this.adstyle = this.$element.find(".cb-adstyle");
 
         this.$element.find("img").each(function () {
 
@@ -205,13 +205,13 @@
 
         }
 
-        this.getResize();
+        this.getResize("triming");
 
         return this;
 
     };
 
-    MobileAdStyle.prototype.checkTimer = function () {
+    MobileAdStyle.prototype.checkTimer = function (callback) {
 
         var that = this;
 
@@ -219,19 +219,29 @@
 
         this.timer = setTimeout(function () {
 
-            that.triming();
+            switch (callback) {
+
+                case "triming":
+                    that.triming();
+                    break;
+
+                default:
+                    console.log("no callback");
+                    break;
+
+            }
 
         }, 30);
 
     };
 
-    MobileAdStyle.prototype.getResize = function () {
+    MobileAdStyle.prototype.getResize = function (callback) {
 
         var that = this;
 
         $(window).on("resize", function () {
 
-            that.checkTimer();
+            that.checkTimer(callback);
 
         });
 
