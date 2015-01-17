@@ -1,0 +1,27 @@
+{
+  "name": "jquery.cb-mobileadstyle.js",
+  "version": "1.0.0",
+  "description": "スマホ広告表示用のjQueryプラグイン",
+  "main": "jquery.cbmobileadstyle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maechabin/jquery.cb-mobileadstyle.js.git"
+  },
+  "keywords": [
+    "jQuery"
+  ],
+  "author": "@maechabin",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/maechabin/jquery.cb-mobileadstyle.js/issues"
+  },
+  "homepage": "https://github.com/maechabin/jquery.cb-mobileadstyle.js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

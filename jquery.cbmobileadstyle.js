@@ -18,7 +18,7 @@
             var $this = $(this);
             var width = $this.width();
 
-            if (width == "1") {
+            if (width === 1) {
 
                 $this.css("display", "none");
 
@@ -28,19 +28,30 @@
 
     };
 
-    MobileAdStyle.prototype.overlay = function () {
+    MobileAdStyle.prototype.overlay = function (options) {
 
-        this.$element.css({
+        var style;
+        var position = "bottom";
+        console.log(options);
+
+        if (options != undefined && options.position == "top") {
+        
+            position = "top";
+
+        }
+
+        style = {
 
             "position": "fixed",
-            "bottom": 0,
             "left": 0,
             "right": 0,
             "text-align": "center"
 
-        });
+        }
+        style[position] = 0;
 
-        this.$element.find(".cb-adstyle").css({
+        this.$element.css(style);
+        this.adstyle.css({
 
             "display": "inline",
             "vertical-align": "bottom"
@@ -249,11 +260,11 @@
 
     $.extend($.fn, {
 
-        cbOverlay: function () {
+        cbOverlay: function (options) {
 
             return this.each(function () {
 
-                new MobileAdStyle(this).overlay();
+                new MobileAdStyle(this).overlay(options);
 
             });
 
