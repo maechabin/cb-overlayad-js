@@ -121,7 +121,7 @@ $(".selector").cbRandom({
 
     {
       url: "バナー広告の飛び先URL 2",
-      mage: "バナー広告のパス 2"
+      image: "バナー広告のパス 2"
     }
 
   ]
