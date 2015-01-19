@@ -138,6 +138,8 @@ $(".selector").cbRandom({
 $(".selector").cbInterstitial().cbRetina().cbResponsive();
 ```
 
+[→表示サンプル](http://jsdo.it/maechabin/hv4Z)
+
 ※ただし、以下のメソッドの組み合わせはお控えください。
 
 - .cbOverlay()と.cbInterstitial()
