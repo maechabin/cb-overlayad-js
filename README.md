@@ -22,7 +22,7 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
 ###1. 外部ファイルを読み込む
 当プラグインのcssファイル、jQuery、当プラグインのjsファイルをページに読み込みます。
 ```html
-<link rel="stylesheet" href="jquery.cbmobileadstyle.css">
+<link rel="stylesheet" href="cbmobileadstyle.css">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="jquery.cbmobileadstyle.min.js"></script>
 ```
@@ -45,7 +45,7 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
 
 サイトの上部または下部に固定表示させる広告表示スタイル。画面をスクロールしても常に表示され続けるため、クリック率が高くなります。320×50のバナーを使って実装するのが一般的です。
 
-[→オーバーレイのサンプル](http://jsdo.it/maechabin/fO2S)
+[→オーバーレイのサンプル](http://jsrun.it/maechabin/fO2S)
 
 ```js
 $(".selector").cbOverlay();
@@ -76,7 +76,7 @@ $(".selector").cbInterstitial();
 
 画面サイズに合わせてバナー広告のサイズもアスペクト比を維持しながら伸縮させて表示させる広告スタイル。
 
-[→レスポンシブのサンプル](http://jsdo.it/maechabin/yjvd)
+[→レスポンシブのサンプル](http://jsrun.it/maechabin/yjvd)
 
 ```js
 $(".selector").cbResponsive();
@@ -87,7 +87,7 @@ $(".selector").cbResponsive();
 
 高精細なスマートフォンのディスプレイに対応させる表示スタイル。こちらのスタイルを適用させる場合は、表示サイズの縦横それぞれ倍のサイズのバナー広告を用意します。また、img要素内にサイズの指定もしないでください。
 
-[→高解像度のサンプル](http://jsdo.it/maechabin/r3ic)
+[→高解像度のサンプル](http://jsrun.it/maechabin/r3ic)
 
 ```js
 $(".selector").cbRetina();
@@ -98,7 +98,7 @@ $(".selector").cbRetina();
 画面サイズが変更されても、サイズと中央配置を維持したまま表示させる広告スタイル。
 現在のスマートフォンの画面サイズは大型化してきており、幅320pxのバナーを中央配置しても左右にスペースが入ってしまう場合があります。320pxよりも幅の大きいバナー広告を用意し、こちらのスタイルを適用させることが解決方法の一つとなります。
 
-[→トリミングのサンプル](http://jsdo.it/maechabin/yJdT)
+[→トリミングのサンプル](http://jsrun.it/maechabin/yJdT)
 
 ```js
 $(".selector").cbTriming();
@@ -108,7 +108,7 @@ $(".selector").cbTriming();
 
 複数のバナー広告を、ページを表示するたびにランダム表示させる広告スタイル。こちらのスタイルを使用する場合は、必ずランダム表示させたいバナー広告をオプションに指定させます。
 
-[→ランダムのサンプル](http://jsdo.it/maechabin/rQit)
+[→ランダムのサンプル](http://jsrun.it/maechabin/rQit)
 
 ```js
 $(".selector").cbRandom({
@@ -138,7 +138,7 @@ $(".selector").cbRandom({
 $(".selector").cbInterstitial().cbRetina().cbResponsive();
 ```
 
-[→表示サンプル](http://jsdo.it/maechabin/hv4Z)
+[→表示サンプル](http://jsrun.it/maechabin/hv4Z)
 
 ※ただし、以下のメソッドの組み合わせはお控えください。
 
