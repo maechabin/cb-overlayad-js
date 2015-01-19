@@ -124,7 +124,7 @@
 
     MobileAdStyle.prototype.responsive = function () {
 
-        this.adstyle.css({
+        this.adstyle.css("display", "inline").css({
 
             "max-width": "100%",
             "height": "auto"
@@ -140,7 +140,7 @@
         var w = this.adstyle.width() / 2;
         var h = this.adstyle.height() / 2;
 
-        this.adstyle.css({
+        this.adstyle.css("display", "inline").css({
 
             "width": w + "px",
             "height": h + "px"
@@ -168,7 +168,7 @@
 
         img_random = Math.floor(Math.random() * img_list.length);
         this.$element.find("a").attr("href", img_list[img_random].url);
-        this.adstyle.attr("src", img_list[img_random].image);
+        this.adstyle.css("display", "inline").attr("src", img_list[img_random].image);
 
         return this;
 

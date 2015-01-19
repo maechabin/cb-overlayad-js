@@ -20,8 +20,9 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
 ##＜実装の準備＞
 
 ###1. 外部ファイルを読み込む
-jQuery、当プラグインをページに読み込みます。
+当プラグインのcssファイル、jQuery、当プラグインのjsファイルをページに読み込みます。
 ```html
+<link rel="stylesheet" href="jquery.cbmobileadstyle.css">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="jquery.cbmobileadstyle.min.js"></script>
 ```
@@ -44,6 +45,8 @@ jQuery、当プラグインをページに読み込みます。
 
 サイトの上部または下部に固定表示させる広告表示スタイル。画面をスクロールしても常に表示され続けるため、クリック率が高くなります。320×50のバナーを使って実装するのが一般的です。
 
+[→オーバーレイのサンプル](http://jsdo.it/maechabin/fO2S)
+
 ```js
 $(".selector").cbOverlay();
 ```
@@ -62,6 +65,8 @@ $(".selector").cbOverlay({
 
 ゲームでのクリア時やWebサイトでのページ遷移時など何かアクションが発生した際に表示させる広告スタイル。全画面いっぱいに表示させるのが一般的です。当プラグインも全画面表示に対応しています。
 
+[→インタースティシャルのサンプル](http://jsrun.it/maechabin/awaV)
+
 ```js
 $(".selector").cbInterstitial();
 ```
@@ -70,6 +75,8 @@ $(".selector").cbInterstitial();
 ###3. レスポンシブ Responsive
 
 画面サイズに合わせてバナー広告のサイズもアスペクト比を維持しながら伸縮させて表示させる広告スタイル。
+
+[→レスポンシブのサンプル](http://jsdo.it/maechabin/yjvd)
 
 ```js
 $(".selector").cbResponsive();
@@ -80,6 +87,8 @@ $(".selector").cbResponsive();
 
 高精細なスマートフォンのディスプレイに対応させる表示スタイル。こちらのスタイルを適用させる場合は、表示サイズの縦横それぞれ倍のサイズのバナー広告を用意します。また、img要素内にサイズの指定もしないでください。
 
+[→高解像度のサンプル](http://jsdo.it/maechabin/r3ic)
+
 ```js
 $(".selector").cbRetina();
 ```
@@ -89,6 +98,7 @@ $(".selector").cbRetina();
 画面サイズが変更されても、サイズと中央配置を維持したまま表示させる広告スタイル。
 現在のスマートフォンの画面サイズは大型化してきており、幅320pxのバナーを中央配置しても左右にスペースが入ってしまう場合があります。320pxよりも幅の大きいバナー広告を用意し、こちらのスタイルを適用させることが解決方法の一つとなります。
 
+[→トリミングのサンプル](http://jsdo.it/maechabin/yJdT)
 
 ```js
 $(".selector").cbTriming();
@@ -97,6 +107,8 @@ $(".selector").cbTriming();
 ###6. ランダム Random
 
 複数のバナー広告を、ページを表示するたびにランダム表示させる広告スタイル。こちらのスタイルを使用する場合は、必ずランダム表示させたいバナー広告をオプションに指定させます。
+
+[→ランダムのサンプル](http://jsdo.it/maechabin/rQit)
 
 ```js
 $(".selector").cbRandom({
