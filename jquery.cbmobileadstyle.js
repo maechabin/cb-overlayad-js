@@ -1,5 +1,5 @@
 /*!
- * jquery.cbMobileAdStyle.js v1.0.0
+ * jquery.cbMobileAdStyle.js v1.1.0
  * Auther @maechabin
  * Licensed under mit license
  * https://github.com/maechabin/jquery.cb-mobileadstyle.js
@@ -32,8 +32,9 @@
 
         var style;
         var position = "bottom";
+        console.log(options);
 
-        if (options != undefined && options.position == "top") {
+        if (options !== undefined && options.position == "top") {
         
             position = "top";
 
@@ -53,7 +54,8 @@
         this.adstyle.css({
 
             "display": "inline",
-            "vertical-align": "bottom"
+            "vertical-align": "bottom",
+            "z-index": 998
 
         });
 
@@ -124,7 +126,7 @@
 
     MobileAdStyle.prototype.responsive = function () {
 
-        this.adstyle.css("display", "inline").css({
+        this.adstyle.css({
 
             "max-width": "100%",
             "height": "auto"
@@ -140,7 +142,7 @@
         var w = this.adstyle.width() / 2;
         var h = this.adstyle.height() / 2;
 
-        this.adstyle.css("display", "inline").css({
+        this.adstyle.css({
 
             "width": w + "px",
             "height": h + "px"
@@ -153,7 +155,7 @@
 
     MobileAdStyle.prototype.random = function (options) {
 
-        if (options == "") {
+        if (options === "") {
 
             return this;
 
@@ -168,7 +170,36 @@
 
         img_random = Math.floor(Math.random() * img_list.length);
         this.$element.find("a").attr("href", img_list[img_random].url);
-        this.adstyle.css("display", "inline").attr("src", img_list[img_random].image);
+        this.adstyle.attr("src", img_list[img_random].image);
+
+        return this;
+
+    };
+
+    MobileAdStyle.prototype.background = function (options) {
+
+        var link = this.$element.find("a").eq(0).attr("href");
+
+        var bgcolor = "rgba(0,0,0,.8)";
+
+        if (options !== undefined && options.bgcolor !== "") {
+
+            bgcolor = options.bgcolor;
+
+        };
+
+        this.$element.css({
+
+            "background-color": bgcolor,
+            "cursor": "pointer"
+
+        });
+
+        this.$element.on("click",  function () {
+
+            window.open(link, "_blank");
+
+        });
 
         return this;
 
@@ -201,7 +232,7 @@
             this.$element.css({
 
                 "width": "100%",
-                                "text-align": "center"
+                "text-align": "center"
 
             });
 
@@ -304,6 +335,16 @@
             return this.each(function () {
 
                 new MobileAdStyle(this).triming();
+
+            });
+
+        },
+
+        cbBackground: function (options) {
+
+            return this.each(function () {
+
+                new MobileAdStyle(this).background(options);
 
             });
 
