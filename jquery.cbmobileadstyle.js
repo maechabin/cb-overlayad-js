@@ -179,7 +179,6 @@
     MobileAdStyle.prototype.background = function (options) {
 
         var link = this.$element.find("a").eq(0).attr("href");
-
         var bgcolor = "rgba(0,0,0,.8)";
 
         if (options !== undefined && options.bgcolor !== "") {
@@ -216,7 +215,7 @@
             this.$element.css({
 
                 "overflow": "hidden",
-                "width": window_width + "px", 
+                "width": window_width + "px",
 
             });
 
