@@ -1,8 +1,11 @@
 {
   "name": "jquery.cb-mobileadstyle.js",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "スマホ広告表示用のjQueryプラグイン",
-  "main": "jquery.cbmobileadstyle.js",
+  "main": "./jquery.cbmobileadstyle.js",
+  "style": [
+    "./cbmobileadstyle.css"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +16,7 @@
   "keywords": [
     "jQuery"
   ],
-  "author": "@maechabin",
+  "author": "@maechabin http://mae.chab.in/",
   "license": "MIT License",
   "bugs": {
     "url": "https://github.com/maechabin/jquery.cb-mobileadstyle.js/issues"

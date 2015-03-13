@@ -7,7 +7,6 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
-                    // 出力ファイル: 元ファイル
                     'jquery.cbmobileadstyle.min.js': 'jquery.cbmobileadstyle.js'
                 }
             }
@@ -15,15 +14,15 @@ module.exports = function (grunt) {
 
         watch: {
             js: {
-                files: 'js/*.js',
+                files: 'jquery.cbmobileadstyle.js',
                 tasks: ['uglify']
             }
         }
     });
 
-    // プラグインのロード・デフォルトタスクの登録
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+
     grunt.registerTask('default', ['uglify']);
 
 };
