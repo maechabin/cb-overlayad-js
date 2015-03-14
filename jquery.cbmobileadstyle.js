@@ -60,7 +60,8 @@
       "right": 0,
       "text-align": "center"
 
-    }
+    };
+
     style[position] = 0;
 
     this.$element.css(style);
@@ -198,7 +199,7 @@
 
       bgcolor = options.bgcolor;
 
-    };
+    }
 
     this.$element.css({
 
