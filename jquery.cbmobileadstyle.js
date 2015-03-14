@@ -4,19 +4,21 @@
  * Licensed under mit license
  * https://github.com/maechabin/jquery.cb-mobileadstyle.js
  */
-(function (root, factory) {
+;(function (factory) {
 
-  if (typeof module === "object" && module.exports) {
+  if(typeof module === "object" && typeof module.exports === "object") {
 
-    module.exports = factory(require("jquery"), window, document);
+    factory(require("jquery"), window, document);
 
   } else {
 
-    root.myModule = factory(root.postal);
+    factory(jQuery, window, document);
 
   }
 
-} (this, function ($, window, document, undefined) {
+} (function ($, window, document, undefined) {
+
+  "use strict";
 
   var MobileAdStyle = function (element) {
 
@@ -44,7 +46,6 @@
 
     var style;
     var position = "bottom";
-    console.log(options);
 
     if (options !== undefined && options.position == "top") {
 
