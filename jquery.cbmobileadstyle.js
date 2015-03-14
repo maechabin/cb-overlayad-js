@@ -47,7 +47,7 @@
     var style;
     var position = "bottom";
 
-    if (options !== undefined && options.position == "top") {
+    if (options !== undefined && options.position === "top") {
 
       position = "top";
 

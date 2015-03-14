@@ -1,28 +1,38 @@
 module.exports = function (grunt) {
 
-    var pkg = grunt.file.readJSON('package.json');
+  var pkg = grunt.file.readJSON('package.json');
 
-    grunt.initConfig({
+  grunt.initConfig({
 
-        uglify: {
-            dist: {
-                files: {
-                    'jquery.cbmobileadstyle.min.js': 'jquery.cbmobileadstyle.js'
-                }
-            }
-        },
-
-        watch: {
-            js: {
-                files: 'jquery.cbmobileadstyle.js',
-                tasks: ['uglify']
-            }
+    uglify: {
+      dist: {
+        files: {
+          'jquery.cbmobileadstyle.min.js': 'jquery.cbmobileadstyle.js'
         }
-    });
+      }
+    },
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    watch: {
+      options: {
+        spawn: false
+      },
+      js: {
+        files: ['jquery.cbmobileadstyle.js'],
+        tasks: ['uglify']
+      }
+    },
 
-    grunt.registerTask('default', ['uglify']);
+    jshint: {
+      all: ['jquery.cbmobileadstyle.js']
+    }
+
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+
+  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('jshint', ['jshint']);
 
 };
