@@ -1,5 +1,5 @@
 /*!
- * jquery.cbMobileAdStyle.js v1.1.2
+ * jquery.cbMobileAdStyle.js v1.1.3
  * Auther @maechabin
  * Licensed under mit license
  * https://github.com/maechabin/jquery.cb-mobileadstyle.js
@@ -8,7 +8,7 @@
 
   if(typeof module === "object" && typeof module.exports === "object") {
 
-    factory(require("jquery"), window, document);
+    module.exports = factory(require("jquery"), window, document);
 
   } else {
 
