@@ -1,10 +1,12 @@
 /*!
- * jquery.cbMobileAdStyle.js v1.1.3
+ * jquery.cbMobileAdStyle.js v1.1.4
  * Auther @maechabin
  * Licensed under mit license
  * https://github.com/maechabin/jquery.cb-mobileadstyle.js
  */
 ;(function (factory) {
+
+  "use strict";
 
   if(typeof module === "object" && typeof module.exports === "object") {
 
@@ -84,6 +86,7 @@
 
       "position": "absolute",
       "top": 0,
+      "left": 0,
       "width": "100%",
       "height": "100%",
       "background-color": "rgba(0,0,0,.8)",
@@ -109,7 +112,7 @@
     });
 
     that.$element.append(bg);
-    $(bg).append(clear_btn);
+    bg.append(clear_btn);
 
     this.adstyle.css("display", "inline").css({
 
@@ -208,7 +211,7 @@
 
     });
 
-    this.$element.on("click",  function () {
+    this.$element.on("click", function () {
 
       window.open(link, "_blank");
 
@@ -269,9 +272,9 @@
 
     var that = this;
 
-    clearTimeout(this.timer);
+    window.clearTimeout(this.timer);
 
-    this.timer = setTimeout(function () {
+    this.timer = window.setTimeout(function () {
 
       switch (callback) {
 
@@ -280,7 +283,7 @@
           break;
 
         default:
-          console.log("no callback");
+          window.console.log("no callback");
           break;
 
       }

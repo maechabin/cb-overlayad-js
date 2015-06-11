@@ -39,7 +39,6 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
 </div>
 ```
 
-
 ##＜各広告表示スタイルの実装方法＞
 
 ###1. オーバーレイ Overlay
