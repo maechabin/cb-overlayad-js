@@ -84,9 +84,11 @@
     var that = this;
     var bg = $("<div>").css({
 
-      "position": "absolute",
+      "position": "fixed",
       "top": 0,
       "left": 0,
+      "right": 0,
+      "bottom": 0,
       "width": "100%",
       "height": "100%",
       "background-color": "rgba(0,0,0,.8)",
@@ -94,22 +96,24 @@
 
     });
 
-    var clear_btn = $("<button>").html("×").css({
+    var clear_btn = $("<button>").css({
 
-      "width": "32px",
-      "line-height": "24px",
-      "background-color": "#fff",
-      "border": "none",
-      "cursor": "pointer",
-      "border-radius": "2px",
-      "font-size": "18px",
-      "position": "absolute",
-      "top": "8px",
-      "right": "8px",
-      "opacity": 1,
-      "z-index": 1000
+        "width": "32px",
+        "line-height": "32px",
+        "background-color": "#fff",
+        "border": "none",
+        "cursor": "pointer",
+        "border-radius": "3px",
+        "font-size": "18px",
+        "position": "absolute",
+        "text-align": "center",
+        "top": "16px",
+        "right": "16px",
+        "padding": 0,
+        "opacity": 1,
+        "z-index": 1000
 
-    });
+    }).html("×");
 
     that.$element.append(bg);
     bg.append(clear_btn);
