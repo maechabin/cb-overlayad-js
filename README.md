@@ -18,7 +18,7 @@
 $(".selector").cbInterstitial().cbRetina().cbResponsive();
 ```
 
-##＜実装の準備＞
+##<実装の準備>
 
 ###1. 外部ファイルを読み込む
 当プラグインのcssファイル、jQuery、当プラグインのjsファイルをページに読み込みます。
@@ -39,7 +39,7 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
 </div>
 ```
 
-##＜各広告表示スタイルの実装方法＞
+##<スマホ広告の各スタイル実装方法>
 
 ###1. オーバーレイ Overlay
 
@@ -166,16 +166,16 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
 - .cbResponsive()と.cbTriming()
 - .cbInterstitial()と.cbBackground()
 
-##＜デモ＞
+##<デモ>
 
 [http://jsrun.it/maechabin/gvZm](http://jsrun.it/maechabin/gvZm)
 
 
-##＜ライセンス＞
+##<ライセンス>
 
 MIT license
 
-##＜アップデート情報＞
+##<アップデート情報>
 
 ###ver. 1.1.0
 - バックグランド広告表示対応
