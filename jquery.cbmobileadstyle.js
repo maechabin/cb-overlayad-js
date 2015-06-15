@@ -1,5 +1,5 @@
 /*!
- * jquery.cbMobileAdStyle.js v1.1.4
+ * jquery.cbMobileAdStyle.js v1.1.5
  * Auther @maechabin
  * Licensed under mit license
  * https://github.com/maechabin/jquery.cb-mobileadstyle.js
