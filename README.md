@@ -49,7 +49,7 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
 </div>
 ```
 
-##<スマホ広告の各スタイル実装方法>
+##<スマホ広告の各スタイル実装方法>
 
 ###1. オーバーレイ Overlay
 
