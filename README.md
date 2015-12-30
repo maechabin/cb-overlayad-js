@@ -34,8 +34,18 @@ $(".selector").cbInterstitial().cbRetina().cbResponsive();
   - バナー広告の親要素に任意のselector値を指定。
 
 ```html
+<!-- 広告がimgタグの場合 -->
 <div class="selector">
   <a href="バナー広告の飛び先のURL"><img src="バナー広告のパス" class="cb-adstyle"></a>
+</div>
+```
+
+```html
+<!-- 広告がscriptタグの場合 -->
+<div class="selector">
+  <div class="cb-adstyle">
+    <script src="広告表示用のjsファイルのパス"></script>
+  </div>
 </div>
 ```
 
