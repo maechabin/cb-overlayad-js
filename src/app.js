@@ -96,15 +96,18 @@ var jQuery = require('jquery');
     }
 
     setStyle() {
+      let positionStyle = {};
       let adStyle = {
         'display': 'inline-block',
         'position': 'fixed',
-        'left': 0,
-        'right': 0,
         'text-align': 'center'
       };
+      if (this.conf.position === 'top' || this.conf.position === 'bottom') {
+        positionStyle.left = 0;
+        positionStyle.right = 0;
+      }
       adStyle[this.conf.position] = 0;
-      this.$element.css(adStyle);
+      this.$element.css($.extend({}, positionStyle, adStyle));
       this.adImg.css({
         'display': 'inline',
         'vertical-align': 'bottom',
