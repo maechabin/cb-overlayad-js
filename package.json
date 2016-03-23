@@ -1,31 +1,38 @@
 {
-  "name": "jquery.cb-mobileadstyle.js",
-  "version": "1.1.5",
-  "description": "スマホ広告表示用のjQueryプラグイン",
-  "main": "./jquery.cbmobileadstyle.js",
-  "style": [
-    "./cbmobileadstyle.css"
-  ],
+  "name": "overlayad",
+  "version": "1.0.1",
+  "description": "バナー広告をオーバーレイ表示に対応させるjQueryプラグイン",
+  "main": "./jquery.overlayad.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "watchify -t babelify ./src/app.js -o ./dist/bundle.js",
+    "build": "browserify -t babelify ./src/app.js | uglifyjs -c warnings=false > ./dist/jquery.overlayad.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maechabin/jquery.cb-mobileadstyle.js.git"
+    "url": "https://github.com/maechabin/jquery-overlayad-js.git"
   },
   "keywords": [
     "jQuery"
   ],
-  "author": "@maechabin http://mae.chab.in/",
+  "author": "Takanori Maeda @maechabin",
   "license": "MIT License",
   "bugs": {
-    "url": "https://github.com/maechabin/jquery.cb-mobileadstyle.js/issues"
+    "url": "https://github.com/maechabin/jquery-overlayad-js/issues"
   },
-  "homepage": "https://github.com/maechabin/jquery.cb-mobileadstyle.js",
+  "browserify-shim": {
+    "jquery": "global:$"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-uglify": "^0.7.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "babel-preset-es2015": "^6.6.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "browserify-shim": "^3.8.12",
+    "uglify": "^0.1.5",
+    "watchify": "^3.7.0"
   }
 }

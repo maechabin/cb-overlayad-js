@@ -1,4 +1,4 @@
-# jQuery.cbMobileAdStyle.js
+# jquery-overlayad-js
 
 ##＜概要＞
 スマートフォン向けのサイトにバナー広告を表示させる際に、スマホ特有の表示の実装を容易にするjQueryプラグイン。

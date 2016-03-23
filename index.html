@@ -4,7 +4,9 @@
 <head>
 <meta charset="utf-8">
 <style>
-
+.image {
+  display: none;
+}
 </style>
 </head>
 
@@ -12,14 +14,16 @@
 <h1>SlideShowAd</h1>
 <div class="image">
   <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on">
-  <img class="cb-adstyle" border="0" width="320" height="50" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001091000&mc=1"></a>
+  <img border="0" width="320" height="50" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001091000&mc=1"></a>
   <img border="0" width="1" height="1" src="http://www13.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on" alt="">
 </div>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="./jquery.cbmobileadstyle.js"></script>
+<script src="./dist/bundle.js"></script>
 <script>
-$('.image').overlayAd().triming().background();
+$('.image').overlayAd({
+  'mobileStyle': 'triming'
+});
 </script>
 </body>
 </html>
