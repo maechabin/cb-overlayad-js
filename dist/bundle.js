@@ -137,7 +137,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         this.$element.css($.extend({}, positionStyle, adStyle));
         this.adImg.css({
           'display': 'inline',
-          'vertical-align': 'bottom',
+          'vertical-align': 'baseline',
           'z-index': 998
         });
         this.$element.find("img").each(function () {
