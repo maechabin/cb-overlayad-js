@@ -16,6 +16,8 @@ var jQuery = require('jquery');
       this.$window = $(window);
       this.adImg = this.$element.find('a').eq(0).find('img').eq(0);
       this.adLink = this.$element.find('a').eq(0).attr('href');
+      this.width = '';
+      this.height = '';
       this.conf = {};
       this.options = options;
       this.defaults = {
@@ -23,7 +25,7 @@ var jQuery = require('jquery');
         'mobileStyle': 'responsive',
         'targetBlank': false,
         'backgroundStyle': true,
-        'backgroundColor': 'rgba(224,224,224 ,1)'
+        'backgroundColor': 'rgba(1,1,1 ,1)'
       };
     }
 
@@ -36,8 +38,9 @@ var jQuery = require('jquery');
 
     background() {
       this.$element.css({
-        "background-color": this.conf.backgroundColor,
-        "cursor": "pointer"
+        'height': `${this.height}px`,
+        'background-color': this.conf.backgroundColor,
+        'cursor': 'pointer'
       });
       this.$element.on("click", () => {
         if (this.conf.targetBlank) {
@@ -48,7 +51,7 @@ var jQuery = require('jquery');
       });
     }
 
-    triming() {
+    trimming() {
       let windowWidth = this.$window.width();
       let imgWidth = this.adImg.width();
       let diffWidth = (imgWidth - windowWidth) / 2;
@@ -73,15 +76,15 @@ var jQuery = require('jquery');
           "right": 0
         });
       }
-      this.getResize("triming");
+      this.getResize("trimming");
     }
 
     checkTimer(callback) {
       window.clearTimeout(this.timer);
       this.timer = window.setTimeout(() => {
         switch (callback) {
-          case 'triming':
-            this.triming();
+          case 'trimming':
+            this.trimming();
             break;
           default:
             break;
@@ -122,14 +125,33 @@ var jQuery = require('jquery');
       });
     }
 
+    getImgSize() {
+      let imgSize = {};
+      if (this.adImg.attr('width') && this.adImg.attr('height')) {
+        this.width = this.adImg.attr('width');
+        this.height = this.adImg.attr('height');
+        imgSize.width = this.width;
+        imgSize.height = this.height;
+      } else {
+        let imgObj = new Image();
+        imgObj.src = img.attr('src');
+        this.width = imgObj.width;
+        this.height = imgObj.height;
+        imgSize.width = this.width;
+        imgSize.height = this.height;
+      }
+      return imgSize;
+    }
+
     init(options) {
       this.conf = $.extend({}, this.defaults, this.options);
+      this.getImgSize();
       this.setStyle();
       if (this.conf.mobileStyle === 'responsive') {
         this.responsive();
       }
-      if (this.conf.mobileStyle === 'triming') {
-        this.triming();
+      if (this.conf.mobileStyle === 'trimming') {
+        this.trimming();
       }
       if (this.conf.backgroundStyle) {
         this.background();

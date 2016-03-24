@@ -27,6 +27,8 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
       this.$window = $(window);
       this.adImg = this.$element.find('a').eq(0).find('img').eq(0);
       this.adLink = this.$element.find('a').eq(0).attr('href');
+      this.width = '';
+      this.height = '';
       this.conf = {};
       this.options = options;
       this.defaults = {
@@ -34,7 +36,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         'mobileStyle': 'responsive',
         'targetBlank': false,
         'backgroundStyle': true,
-        'backgroundColor': 'rgba(224,224,224 ,1)'
+        'backgroundColor': 'rgba(1,1,1 ,1)'
       };
     }
 
@@ -52,8 +54,9 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         var _this = this;
 
         this.$element.css({
-          "background-color": this.conf.backgroundColor,
-          "cursor": "pointer"
+          'height': this.height + 'px',
+          'background-color': this.conf.backgroundColor,
+          'cursor': 'pointer'
         });
         this.$element.on("click", function () {
           if (_this.conf.targetBlank) {
@@ -64,8 +67,8 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         });
       }
     }, {
-      key: 'triming',
-      value: function triming() {
+      key: 'trimming',
+      value: function trimming() {
         var windowWidth = this.$window.width();
         var imgWidth = this.adImg.width();
         var diffWidth = (imgWidth - windowWidth) / 2;
@@ -90,7 +93,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
             "right": 0
           });
         }
-        this.getResize("triming");
+        this.getResize("trimming");
       }
     }, {
       key: 'checkTimer',
@@ -100,8 +103,8 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         window.clearTimeout(this.timer);
         this.timer = window.setTimeout(function () {
           switch (callback) {
-            case 'triming':
-              _this2.triming();
+            case 'trimming':
+              _this2.trimming();
               break;
             default:
               break;
@@ -146,15 +149,35 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         });
       }
     }, {
+      key: 'getImgSize',
+      value: function getImgSize() {
+        var imgSize = {};
+        if (this.adImg.attr('width') && this.adImg.attr('height')) {
+          this.width = this.adImg.attr('width');
+          this.height = this.adImg.attr('height');
+          imgSize.width = this.width;
+          imgSize.height = this.height;
+        } else {
+          var imgObj = new Image();
+          imgObj.src = img.attr('src');
+          this.width = imgObj.width;
+          this.height = imgObj.height;
+          imgSize.width = this.width;
+          imgSize.height = this.height;
+        }
+        return imgSize;
+      }
+    }, {
       key: 'init',
       value: function init(options) {
         this.conf = $.extend({}, this.defaults, this.options);
+        this.getImgSize();
         this.setStyle();
         if (this.conf.mobileStyle === 'responsive') {
           this.responsive();
         }
-        if (this.conf.mobileStyle === 'triming') {
-          this.triming();
+        if (this.conf.mobileStyle === 'trimming') {
+          this.trimming();
         }
         if (this.conf.backgroundStyle) {
           this.background();
