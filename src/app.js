@@ -31,18 +31,17 @@ var jQuery = require('jquery');
 
     responsive() {
       this.adImg.css({
-        "max-width": "100%",
-        "height": "auto"
+        'maxWidth': '100%',
+        'height': 'auto'
       });
     }
 
     background() {
       this.$element.css({
-        'height': `${this.height}px`,
-        'background-color': this.conf.backgroundColor,
+        'backgroundColor': this.conf.backgroundColor,
         'cursor': 'pointer'
       });
-      this.$element.on("click", () => {
+      this.$element.on('click', () => {
         if (this.conf.targetBlank) {
           window.open(this.adLink, '_blank');
         } else {
@@ -58,25 +57,25 @@ var jQuery = require('jquery');
 
       if (imgWidth > windowWidth) {
         this.$element.css({
-          "overflow": "hidden",
-          "width": windowWidth + "px",
+          'overflow': 'hidden',
+          'width': windowWidth + 'px'
         });
         this.adImg.css({
-          "position": "relative",
-          "left": - diffWidth + "px"
+          'position': 'relative',
+          'left': - diffWidth + 'px'
         });
       } else {
         this.$element.css({
-          "width": "100%",
-          "text-align": "center"
+          'width': '100%',
+          'textAlign': 'center'
         });
         this.adImg.css({
-          "position": "relative",
-          "left": 0,
-          "right": 0
+          'position': 'relative',
+          'left': 0,
+          'right': 0
         });
       }
-      this.getResize("trimming");
+      this.getResize('trimming');
     }
 
     checkTimer(callback) {
@@ -103,7 +102,7 @@ var jQuery = require('jquery');
       let adStyle = {
         'display': 'inline-block',
         'position': 'fixed',
-        'text-align': 'center'
+        'textAlign': 'center'
       };
       if (this.conf.position === 'top' || this.conf.position === 'bottom') {
         positionStyle.left = 0;
@@ -113,14 +112,14 @@ var jQuery = require('jquery');
       this.$element.css($.extend({}, positionStyle, adStyle));
       this.adImg.css({
         'display': 'inline',
-        'vertical-align': 'baseline',
-        'z-index': 998
+        'verticalAlign': 'top',
+        'zIndex': 998
       });
-      this.$element.find("img").each(function () {
+      this.$element.find('img').each(function () {
         let $this = $(this);
         let width = $this.width();
         if (width === 1) {
-          $this.css("display", "none");
+          $this.css('display', 'none');
         }
       });
     }
@@ -134,7 +133,7 @@ var jQuery = require('jquery');
         imgSize.height = this.height;
       } else {
         let imgObj = new Image();
-        imgObj.src = img.attr('src');
+        imgObj.src = this.adImg.attr('src');
         this.width = imgObj.width;
         this.height = imgObj.height;
         imgSize.width = this.width;
@@ -143,7 +142,7 @@ var jQuery = require('jquery');
       return imgSize;
     }
 
-    init(options) {
+    init() {
       this.conf = $.extend({}, this.defaults, this.options);
       this.getImgSize();
       this.setStyle();
