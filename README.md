@@ -1,85 +1,106 @@
 # jquery-overlayad-js
 
-##＜概要＞
-スマートフォン向けのサイトにバナー広告を表示させる際に、スマホ特有の表示の実装を容易にするjQueryプラグイン。
+バナー広告をページの下部または上部に`「固定（オーバーレイ）表示」`させるためのjQueryプラグイン。
 
-以下の広告表示スタイルに対応
-
-  - オーバーレイ（サイトの上部、下部に固定表示）
-  - インタースティシャル（アクションが起きた後の、全画面表示）
-  - レスポンシブ（画面サイズに合わせて、アスペクト比を維持したまま伸縮表示）
-  - 高解像度（Retinaディスプレイに対応、画像を縦横サイズ1/2で表示）
-  - トリミング（画面サイズが変更されても、サイズと中央配置を維持したまま表示）
-  - バックグランド（バナーの両端に空いたスペースを背景色で埋めて表示）
-  - ランダム（複数の画像をブラウザーをリロードするたびにランダム表示）
-
-使い方は以下の通り。スタイルを適用させたいバナー広告の要素に対して、メソッドを実行。以下のようにメソッドチェーンして複数のスタイルを適用させることも可能。
-```js
-$(".selector").cbInterstitial().cbRetina().cbResponsive();
-```
-
-##<実装の準備>
-
-###1. 外部ファイルを読み込む
-当プラグインのcssファイル、jQuery、当プラグインのjsファイルをページに読み込みます。
-```html
-<link rel="stylesheet" href="cbmobileadstyle.css">
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="jquery.cbmobileadstyle.min.js"></script>
-```
-
-###2. バナー広告の実装-基本スタイル
-
-  - バナー広告のclass属性に「cb-adstyle」という値を指定。
-  - バナー広告の親要素に任意のselector値を指定。
-
-```html
-<!-- 広告がimgタグの場合 -->
-<div class="selector">
-  <a href="バナー広告の飛び先のURL"><img src="バナー広告のパス" class="cb-adstyle"></a>
-</div>
-```
-
-```html
-<!-- 広告がscriptタグの場合 -->
-<div class="selector">
-  <div class="cb-adstyle">
-    <script src="広告表示用のjsファイルのパス"></script>
-  </div>
-</div>
-```
-
-##<スマホ広告の各スタイル実装方法>
-
-###1. オーバーレイ Overlay
+## About
 
 サイトの上部または下部に固定表示させる広告表示スタイル。画面をスクロールしても常に表示され続けるため、クリック率が高くなります。320×50のバナーを使って実装するのが一般的です。
 
-[→オーバーレイのサンプル](http://jsrun.it/maechabin/fO2S)
+## Demo
 
-```js
-$(".selector").cbOverlay();
+## Download
+
+こちらのページから[ダウンロード](https://github.com/maechabin/jquery-overlayad-js/archive/master.zip)するか、`[git clone]`コマンドでローカルにコピーします。
+
+```
+$ git clone git@github.com:maechabin/jquery-overlayad-js.git 任意のディレクトリ名
 ```
 
-####オプション
+機能の実装に使用するファイルは以下のjsファイルとなります。
+- ./dist/jquery.overlayad.js
+
+
+## Usage
+
+### 1. jQueryと当プラグインの読み込み
+
+jQuery本体とdistディレクトリ内の「jquery.overlayad.js」をページに読み込みます。
+
+```html
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="./dist/jquery.overlayad.js"></script>
+```
+
+### 2. オーバーレイ広告を表示させる要素を準備
+
+htmlファイル内にオーバーレイ広告を表示させる要素を作成し、任意のclass名またはid名を付けます。
+
+```html
+<div class="overlay-images">
+
+</div>
+```
+
+作成した要素に対して、以下のスタイルを指定します。（ページ表示時に、設定した広告の画像が表示されるのを防ぐためです。）
+```css
+.overlay-images {
+  display: none;
+}
+```
+
+### 3. スライドショーさせる広告を設定
+
+上記で作成した要素内にスライドショーさせる広告タグ（リンク, 画像[, インプレッション計測用画像]）を順に貼り付けます。貼り付けた順番にスライドショーが実行されます。貼り付ける広告の数に制限はありません。（貼り付ける広告の画像はできるだけ同じサイズのものとすることを推奨します）
+
+```html
+<div class="overlay-imagess">
+  <a href="http://example.com/">
+    <img src="http://exapmle.com/example1.png" width="300" height="200">
+  </a>
+  <img src="http://example.com/img1.gif" width="1" height="1">
+</div>
+```
+
+設定する広告タグは以下の形式（`img要素`を持った`a要素`）となります。a要素には必ずhref属性、img要素にはwidth属性、height属性を設定するようにしてください（width属性、height属性がないと画像の表示サイズに不具合が生じる場合があります）。インプレッションを計測するためのimg要素はあってもなくても問題ありません。（多くのアフィリエイトサービスの広告タグは以下の形式となっていることが多いです）
+
+```html
+<!-- スライドショーの対象となる広告タグの形式 -->
+
+<!-- 広告の飛び先URL（href属性必須） -->
+<a href="http://example.com/">
+    <!-- 広告の画像（width属性/height属性必須） -->
+  <img src="http://exapmle.com/example.png" width="300" height="200">
+</a>
+<!-- インプレッション計測用のimg要素（任意） -->
+<img src="http://example.com/img.gif" width="1" height="1">
+```
+
+### 4. プラグインを実行
+
+ステップ2で作成した要素に対して、`.overlayAd()`メソッドを実行します。
+
+```javascript
+$('.overlay-images').overlayAd();
+```
+
+
+## Options
+
+**position {String}** 'bottom',
+**mobileStyle {String}** 'responsive',
+**targetBlank {Boolean}** false,
+**backgroundStyle {Boolean}** true,
+**backgroundColor {String}** 'rgba(1,1,1 ,1)'
+
+
+
+
+
+
+
+
 
 デフォルトでは画面下部に固定表示されるようになっていますが、以下のようにオプションを設定すると、画面上部に固定表示させることができます。
-
-```js
-$(".selector").cbOverlay({
-  "position": "top"
-});
-```
-
-###2. インタースティシャル（全画面 / ライトボックス） Interstitial
-
-ゲームでのクリア時やWebサイトでのページ遷移時など何かアクションが発生した際に表示させる広告スタイル。全画面いっぱいに表示させるのが一般的です。当プラグインも全画面表示に対応しています。
-
-[→インタースティシャルのサンプル](http://jsrun.it/maechabin/awaV)
-
-```js
-$(".selector").cbInterstitial();
-```
 
 
 ###3. レスポンシブ Responsive
@@ -93,15 +114,6 @@ $(".selector").cbResponsive();
 ```
 
 
-###4. 高解像度 Retina
-
-高精細なスマートフォンのディスプレイに対応させる表示スタイル。こちらのスタイルを適用させる場合は、表示サイズの縦横それぞれ倍のサイズのバナー広告を用意します。また、img要素内にサイズの指定もしないでください。
-
-[→高解像度のサンプル](http://jsrun.it/maechabin/r3ic)
-
-```js
-$(".selector").cbRetina();
-```
 
 ###5. トリミング Triming
 
@@ -125,67 +137,23 @@ $(".selector").cbTriming();
 $(".selector").cbBackground();
 ```
 
-####オプション
 
-以下のように背景色を任意の色で指定することができます。指定できる値は、CSSのbackground-colorプロパティに指定できる値となります。
-```js
-$(".selector").cbBackground({
-  "bgcolor": "#aaa"
+
+オプションの指定方法は以下の通りです。slideShowAd()メソッドの引数にオブジェクトリテラル形式でオプションを指定します。
+```javascript
+// ページ上部に固定し、ページを狭めるとトリミング表示、
+// リンク先は別ウィンドウで表示、背景なし（余白あり）
+$('.overlay-images').overlayAd({
+  'position': 'top',
+  'mobileStyle': 'trimming',
+  'targetBlank': true,
+  'backgroundStyle': false,
+  'backgroundColor': 'none'
 });
 ```
 
-###7. ランダム Random
-
-複数のバナー広告を、ページを表示するたびにランダム表示させる広告スタイル。こちらのスタイルを使用する場合は、必ずランダム表示させたいバナー広告をオプションに指定させます。
-
-[→ランダムのサンプル](http://jsrun.it/maechabin/rQit)
-
-```js
-$(".selector").cbRandom({
-
-  ad: [
-    {
-      url: "バナー広告の飛び先URL 1",
-      image: "バナー広告のパス 1"
-    },
-
-    {
-      url: "バナー広告の飛び先URL 2",
-      image: "バナー広告のパス 2"
-    }
-
-  ]
-
-});
-```
-
-##<注意点>
-
-上記のメソッドをメソッドチェーンでひとつのバナー広告に対して複数のスタイルを適用させることも可能です。
-
-以下の例は、インタースティシャル広告に高解像度とレスポンシブを適用させた広告スタイルとなります。
-```js
-$(".selector").cbInterstitial().cbRetina().cbResponsive();
-```
-
-[→表示サンプル](http://jsrun.it/maechabin/hv4Z)
-
-※ただし、以下のメソッドの組み合わせはお控えください。
-
-- .cbOverlay()と.cbInterstitial()
-- .cbResponsive()と.cbTriming()
-- .cbInterstitial()と.cbBackground()
-
-##<デモ>
-
-[http://jsrun.it/maechabin/gvZm](http://jsrun.it/maechabin/gvZm)
 
 
-##<ライセンス>
+## License
 
-MIT license
-
-##<アップデート情報>
-
-###ver. 1.1.0
-- バックグランド広告表示対応
+Mit License
