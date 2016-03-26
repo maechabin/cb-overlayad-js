@@ -22,6 +22,12 @@
 $ git clone git@github.com:maechabin/jquery-overlayad-js.git 任意のディレクトリ名
 ```
 
+npm経由でも入手可能です。
+
+```
+$ npm install --save overlayad
+```
+
 機能の実装に使用するファイルは以下のjsファイルとなります。
 - ./dist/jquery.overlayad.js
 
