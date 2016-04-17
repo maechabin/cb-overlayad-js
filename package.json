@@ -1,6 +1,6 @@
 {
   "name": "overlayad",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "バナー広告をオーバーレイ表示に対応させるjQueryプラグイン",
   "main": "./jquery.overlayad.js",
   "scripts": {
