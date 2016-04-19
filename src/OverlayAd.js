@@ -1,4 +1,4 @@
-var jQuery = require('jquery');
+const $ = require('jquery');
 export default class OverlayAd {
 
   constructor(element, options) {
@@ -13,25 +13,25 @@ export default class OverlayAd {
     this.conf = {};
     this.options = options;
     this.defaults = {
-      'position': 'bottom',
-      'mobileStyle': 'responsive',
-      'targetBlank': false,
-      'backgroundStyle': true,
-      'backgroundColor': 'rgba(1,1,1 ,.9)'
+      position: 'bottom',
+      mobileStyle: 'responsive',
+      targetBlank: false,
+      backgroundStyle: true,
+      backgroundColor: 'rgba(1,1,1 ,.9)',
     };
   }
 
   responsive() {
     this.adImg.css({
-      'maxWidth': '100%',
-      'height': 'auto'
+      maxWidth: '100%',
+      height: 'auto',
     });
   }
 
   background() {
     this.$element.css({
-      'backgroundColor': this.conf.backgroundColor,
-      'cursor': 'pointer'
+      backgroundColor: this.conf.backgroundColor,
+      cursor: 'pointer',
     });
     this.$element.on('click', () => {
       if (this.conf.targetBlank) {
@@ -43,28 +43,28 @@ export default class OverlayAd {
   }
 
   trimming() {
-    let windowWidth = this.$window.width();
-    let imgWidth = this.adImg.width();
-    let diffWidth = (imgWidth - windowWidth) / 2;
+    const windowWidth = this.$window.width();
+    const imgWidth = this.adImg.width();
+    const diffWidth = (imgWidth - windowWidth) / 2;
 
     if (imgWidth > windowWidth) {
       this.$element.css({
-        'overflow': 'hidden',
-        'width': windowWidth + 'px'
+        overflow: 'hidden',
+        width: `${windowWidth}px`,
       });
       this.adImg.css({
-        'position': 'relative',
-        'left': - diffWidth + 'px'
+        position: 'relative',
+        left: - `${diffWidth}px`,
       });
     } else {
       this.$element.css({
-        'width': '100%',
-        'textAlign': 'center'
+        width: '100%',
+        textAlign: 'center',
       });
       this.adImg.css({
-        'position': 'relative',
-        'left': 0,
-        'right': 0
+        position: 'relative',
+        left: 0,
+        right: 0,
       });
     }
     this.getResize('trimming');
@@ -90,11 +90,11 @@ export default class OverlayAd {
   }
 
   setStyle() {
-    let positionStyle = {};
-    let adStyle = {
-      'display': 'inline-block',
-      'position': 'fixed',
-      'textAlign': 'center'
+    const positionStyle = {};
+    const adStyle = {
+      display: 'inline-block',
+      position: 'fixed',
+      textAlign: 'center',
     };
     if (this.conf.position === 'top' || this.conf.position === 'bottom') {
       positionStyle.left = 0;
@@ -103,14 +103,14 @@ export default class OverlayAd {
     adStyle[this.conf.position] = 0;
     this.$element.css($.extend({}, positionStyle, adStyle));
     this.adImg.css({
-      'display': 'inline',
-      'verticalAlign': 'top',
-      'zIndex': 998
+      display: 'inline',
+      verticalAlign: 'top',
+      zIndex: 998,
     });
-    this.$element.find('img').each(function () {
-      let $this = $(this);
-      let width = $this.width();
-      let height = $this.height();
+    this.$element.find('img').each(function deleteImpImg() {
+      const $this = $(this);
+      const width = $this.width();
+      const height = $this.height();
       if (width === 1 || height === 1) {
         $this.css('display', 'none');
       }
@@ -118,14 +118,14 @@ export default class OverlayAd {
   }
 
   getImgSize() {
-    let imgSize = {};
+    const imgSize = {};
     if (this.adImg.attr('width') && this.adImg.attr('height')) {
       this.width = this.adImg.attr('width');
       this.height = this.adImg.attr('height');
       imgSize.width = this.width;
       imgSize.height = this.height;
     } else {
-      let imgObj = new Image();
+      const imgObj = new Image();
       imgObj.src = this.adImg.attr('src');
       this.width = imgObj.width;
       this.height = imgObj.height;

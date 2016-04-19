@@ -10,7 +10,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
+var $ = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
 
 var OverlayAd = function () {
   function OverlayAd(element, options) {
@@ -27,11 +27,11 @@ var OverlayAd = function () {
     this.conf = {};
     this.options = options;
     this.defaults = {
-      'position': 'bottom',
-      'mobileStyle': 'responsive',
-      'targetBlank': false,
-      'backgroundStyle': true,
-      'backgroundColor': 'rgba(1,1,1 ,.9)'
+      position: 'bottom',
+      mobileStyle: 'responsive',
+      targetBlank: false,
+      backgroundStyle: true,
+      backgroundColor: 'rgba(1,1,1 ,.9)'
     };
   }
 
@@ -39,8 +39,8 @@ var OverlayAd = function () {
     key: 'responsive',
     value: function responsive() {
       this.adImg.css({
-        'maxWidth': '100%',
-        'height': 'auto'
+        maxWidth: '100%',
+        height: 'auto'
       });
     }
   }, {
@@ -49,8 +49,8 @@ var OverlayAd = function () {
       var _this = this;
 
       this.$element.css({
-        'backgroundColor': this.conf.backgroundColor,
-        'cursor': 'pointer'
+        backgroundColor: this.conf.backgroundColor,
+        cursor: 'pointer'
       });
       this.$element.on('click', function () {
         if (_this.conf.targetBlank) {
@@ -69,22 +69,22 @@ var OverlayAd = function () {
 
       if (imgWidth > windowWidth) {
         this.$element.css({
-          'overflow': 'hidden',
-          'width': windowWidth + 'px'
+          overflow: 'hidden',
+          width: windowWidth + 'px'
         });
         this.adImg.css({
-          'position': 'relative',
-          'left': -diffWidth + 'px'
+          position: 'relative',
+          left: -(diffWidth + 'px')
         });
       } else {
         this.$element.css({
-          'width': '100%',
-          'textAlign': 'center'
+          width: '100%',
+          textAlign: 'center'
         });
         this.adImg.css({
-          'position': 'relative',
-          'left': 0,
-          'right': 0
+          position: 'relative',
+          left: 0,
+          right: 0
         });
       }
       this.getResize('trimming');
@@ -119,9 +119,9 @@ var OverlayAd = function () {
     value: function setStyle() {
       var positionStyle = {};
       var adStyle = {
-        'display': 'inline-block',
-        'position': 'fixed',
-        'textAlign': 'center'
+        display: 'inline-block',
+        position: 'fixed',
+        textAlign: 'center'
       };
       if (this.conf.position === 'top' || this.conf.position === 'bottom') {
         positionStyle.left = 0;
@@ -130,11 +130,11 @@ var OverlayAd = function () {
       adStyle[this.conf.position] = 0;
       this.$element.css($.extend({}, positionStyle, adStyle));
       this.adImg.css({
-        'display': 'inline',
-        'verticalAlign': 'top',
-        'zIndex': 998
+        display: 'inline',
+        verticalAlign: 'top',
+        zIndex: 998
       });
-      this.$element.find('img').each(function () {
+      this.$element.find('img').each(function deleteImpImg() {
         var $this = $(this);
         var width = $this.width();
         var height = $this.height();
@@ -207,9 +207,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object' && _typeof(module.exports) === 'object') {
     module.exports = factory((typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null), window, document);
   } else {
-    factory(_jquery2.default, window, document);
+    factory(_jquery2.default);
   }
-})(function ($, window, document, undefined) {
+})(function ($) {
   $.extend($.fn, {
     overlayAd: function overlayAd(options) {
       var _this = this;

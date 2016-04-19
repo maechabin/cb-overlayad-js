@@ -1,6 +1,6 @@
 {
   "name": "overlayad",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "バナー広告をオーバーレイ表示に対応させるjQueryプラグイン",
   "main": "./jquery.overlayad.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "url": "https://github.com/maechabin/jquery-overlayad-js.git"
   },
   "keywords": [
-    "jQuery", "jquery-plugin"
+    "jQuery",
+    "jquery-plugin"
   ],
   "author": "Takanori Maeda @maechabin",
   "license": "MIT License",
@@ -35,6 +36,9 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-import": "^1.5.0",
     "qunitjs": "^1.22.0",
     "uglify": "^0.1.5",
     "watchify": "^3.7.0"
